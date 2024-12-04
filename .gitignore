@@ -1,5 +1,5 @@
 # Node.js specific files
-node_modules/       # Ignore the node_modules directory
+node_modules/      # Ignore the node_modules directory
 npm-debug.log*      # Ignore npm debug logs
 yarn-debug.log*     # Ignore yarn debug logs
 yarn-error.log      # Ignore yarn error logs
