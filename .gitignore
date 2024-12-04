@@ -1,0 +1,31 @@
+# Node.js specific files
+node_modules/       # Ignore the node_modules directory
+npm-debug.log*      # Ignore npm debug logs
+yarn-debug.log*     # Ignore yarn debug logs
+yarn-error.log      # Ignore yarn error logs
+
+# Environment variable files
+.env                # Ignore environment files that contain sensitive data (e.g., passwords, API keys)
+
+# Logs
+*.log               # Ignore all log files
+logs/
+
+# OS and IDE specific files
+.DS_Store           # macOS system file
+Thumbs.db           # Windows system file
+.idea/              # JetBrains IDE configuration folder
+.vscode/            # VSCode configuration folder
+
+# Build/Distribution files
+dist/               # Ignore the dist folder (build output folder)
+build/              # Ignore the build folder (if using build tools)
+
+# Dependency directories for specific package managers (if you use any other tools)
+.pnp/               # For Yarn PnP (Plug'n'Play)
+.coverage/          # For coverage reports if using test coverage tools
+
+# Temporary files from editors
+*.swp               # Swap files from editors like Vim
+*.sublime-workspace # Sublime Text workspace files
+*.sublime-project   # Sublime Text project files
