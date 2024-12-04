@@ -29,31 +29,25 @@ const registerUser = asyncHandler(async (req, res) => {
 
 // Login user
 const loginUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
-
-  // Check if user exists
-  const user = await User.findOne({ email });
-  if (!user) {
-    return res.status(400).json({ message: 'Email not found' });
-  }
-
-  // Check if password matches
-  const isMatch = await bcrypt.compare(password, user.password);
-  if (!isMatch) {
-    return res.status(400).json({ message: 'Password not match' });
-  }
-
-  // Generate JWT token
-  const token = jwt.sign(
-    { userId: user._id },
-    process.env.JWT_SECRET,
-    { expiresIn: '24h' }
-  );
-
-  res.status(200).json({
-    message: 'Login successful',
-    token,
+    const { email, password } = req.body;
+  
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: "Email not found" });
+    }
+  
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: "Invalid password" });
+    }
+  
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '24h' });
+  
+    res.status(200).json({
+      message: "Login successful",
+      token,
+    });
   });
-});
+  
 
 module.exports = { registerUser, loginUser };
