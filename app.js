@@ -1,14 +1,17 @@
 require("dotenv").config();  // Load environment variables from .env file
 const express = require("express");
 const cors = require("cors");
-const helmet = require("helmet"); // For basic security
-const rateLimit = require("express-rate-limit"); // To prevent abuse
-const mongoSanitize = require("express-mongo-sanitize"); // Sanitize MongoDB inputs
+const helmet = require("helmet");  // For basic security
+const rateLimit = require("express-rate-limit");  // To prevent abuse
+const mongoSanitize = require("express-mongo-sanitize");  // Sanitize MongoDB inputs
 const connectDB = require("./config/db");
 const authRoutes = require('./routes/authRoutes');
 const { errorHandler } = require("./middleware/errormiddleware");
 
 const app = express();
+
+// Trust proxy for X-Forwarded-For headers
+app.set('trust proxy', 1);  // Trust the first proxy (Vercel)
 
 // Connect MongoDB
 connectDB();
@@ -20,23 +23,18 @@ app.use(mongoSanitize());  // Prevent NoSQL injection attacks
 
 // Rate Limiting
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Limit each IP to 100 requests per window
+  windowMs: 15 * 60 * 1000,  // 15 minutes
+  max: 100,  // Limit each IP to 100 requests per window
 });
 app.use(limiter);
 
 // CORS Configuration
 const corsOptions = { 
-  origin: process.env.FRONTEND_URL || "http://localhost:3000",  // Allow frontend URL or fallback to localhost for dev
+  origin: process.env.FRONTEND_URL || "http://localhost:3000",  // Allow frontend URL
   methods: ["GET", "POST", "PUT", "DELETE"],  // Allowed HTTP methods
   allowedHeaders: ["Content-Type", "Authorization"],  // Allowed headers
 };
 app.use(cors(corsOptions));  // Enable CORS with options
-
-// Test route to check if the server is working
-app.get("/hello", (req, res) => {
-  res.status(200).send("Hello World");
-});
 
 // Routes
 app.use('/api/auth', authRoutes);
