@@ -15,6 +15,8 @@ connectDB();
 
 // Middleware
 app.use(express.json()); // Parse JSON bodies
+app.use(express.urlencoded({ extended: true })); // Parse URL-encoded data
+
 app.use(helmet()); // Secure HTTP headers
 app.use(mongoSanitize()); // Prevent NoSQL injection attacks
 
@@ -41,6 +43,10 @@ const corsOptions = {
 // Routes
 app.use('/api/auth', authRoutes);
 
+app.get('/', (req, res) => {
+    res.send('API is running');
+  });
+  
 // Error Handler
 app.use(errorHandler);  // Enable custom error handling
 
