@@ -7,6 +7,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const connectDB = require("./config/db");
 const authRoutes = require('./routes/authRoutes');
 const teamRoutes = require('./routes/teamRoutes');
+const contactRoutes = require('./routes/contactRoutes');
 const { errorHandler } = require("./middleware/errormiddleware");
 
 const app = express();
@@ -45,6 +46,7 @@ const corsOptions = {
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/team', teamRoutes);
+app.use('/api/contact', contactRoutes);
 
 app.get('/', (req, res) => {
     res.send('API is running');
