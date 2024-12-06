@@ -6,6 +6,7 @@ const rateLimit = require("express-rate-limit");
 const mongoSanitize = require("express-mongo-sanitize");
 const connectDB = require("./config/db");
 const authRoutes = require('./routes/authRoutes');
+const teamRoutes = require('./routes/teamRoutes');
 const { errorHandler } = require("./middleware/errormiddleware");
 
 const app = express();
@@ -26,6 +27,7 @@ const limiter = rateLimit({
   max: 100, // Limit each IP to 100 requests per window
 });
 app.use(limiter);
+app.use('/images', express.static('images'));
 
 // CORS Configuration
 const corsOptions = { 
@@ -42,6 +44,7 @@ const corsOptions = {
   
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/team', teamRoutes);
 
 app.get('/', (req, res) => {
     res.send('API is running');
