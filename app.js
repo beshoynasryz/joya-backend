@@ -9,6 +9,7 @@ const authRoutes = require('./routes/authRoutes');
 const teamRoutes = require('./routes/teamRoutes');
 const contactRoutes = require('./routes/contactRoutes');
 const servicesRoutes = require('./routes/servicesRoutes');
+const blogRoutes = require('./routes/blogRoutes');
 const { errorHandler } = require("./middleware/errormiddleware");
 
 const app = express();
@@ -49,6 +50,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/team', teamRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/services', servicesRoutes);
+app.use('/api/blog', blogRoutes);
+
 
 app.get('/', (req, res) => {
     res.send('API is running');
