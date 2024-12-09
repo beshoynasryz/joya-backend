@@ -13,7 +13,7 @@ const blogRoutes = require('./routes/blogRoutes');
 const { errorHandler } = require("./middleware/errormiddleware");
 
 const app = express();
-
+app.use('/images', express.static('images'));
 // Connect MongoDB
 connectDB();
 
@@ -30,7 +30,6 @@ const limiter = rateLimit({
   max: 100, // Limit each IP to 100 requests per window
 });
 app.use(limiter);
-app.use('/images', express.static('images'));
 
 // CORS Configuration
 const corsOptions = { 
