@@ -6,7 +6,7 @@ const propertySchema = new mongoose.Schema(
       type: String,
       enum: ['offplan', 'feature', 'luxury'], // Enum for property type
     
-    },
+    },  
     imageProperty: {
       type: String, // Store image URL or path for the property image
     },
