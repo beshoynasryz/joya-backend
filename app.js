@@ -11,6 +11,7 @@ const contactRoutes = require('./routes/contactRoutes');
 const servicesRoutes = require('./routes/servicesRoutes');
 const blogRoutes = require('./routes/blogRoutes');
 const propertyRoutes = require('./routes/propertyRoutes');
+const testimonialRoutes = require("./routes/testimonialRoutes");
 const { errorHandler } = require("./middleware/errormiddleware");
 
 const app = express();
@@ -52,6 +53,8 @@ app.use('/api/contact', contactRoutes);
 app.use('/api/services', servicesRoutes);
 app.use('/api/blog', blogRoutes);
 app.use('/api/property', propertyRoutes);
+app.use("/api/testimonial", testimonialRoutes);
+
 
 
 app.get('/', (req, res) => {
