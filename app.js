@@ -12,6 +12,7 @@ const servicesRoutes = require('./routes/servicesRoutes');
 const blogRoutes = require('./routes/blogRoutes');
 const propertyRoutes = require('./routes/propertyRoutes');
 const testimonialRoutes = require("./routes/testimonialRoutes");
+const secondSectionRoutes = require("./routes/secondSectionRoutes");
 const { errorHandler } = require("./middleware/errormiddleware");
 
 const app = express();
@@ -54,6 +55,7 @@ app.use('/api/services', servicesRoutes);
 app.use('/api/blog', blogRoutes);
 app.use('/api/property', propertyRoutes);
 app.use("/api/testimonial", testimonialRoutes);
+app.use("/api/secondsection", secondSectionRoutes);
 
 
 
