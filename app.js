@@ -14,6 +14,7 @@ const propertyRoutes = require('./routes/propertyRoutes');
 const testimonialRoutes = require("./routes/testimonialRoutes");
 const secondSectionRoutes = require("./routes/secondSectionRoutes");
 const partnerRoutes = require('./routes/partnerRoutes');
+const sliderRoutes = require('./routes/sliderRoutes');
 
 
 const { errorHandler } = require("./middleware/errormiddleware");
@@ -60,6 +61,7 @@ app.use('/api/property', propertyRoutes);
 app.use("/api/testimonial", testimonialRoutes);
 app.use("/api/secondsection", secondSectionRoutes);
 app.use('/api/partner', partnerRoutes);
+app.use('/api/slider', sliderRoutes);
 
 
 app.get('/', (req, res) => {
