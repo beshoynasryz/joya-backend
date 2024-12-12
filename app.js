@@ -15,7 +15,9 @@ const testimonialRoutes = require("./routes/testimonialRoutes");
 const secondSectionRoutes = require("./routes/secondSectionRoutes");
 const partnerRoutes = require('./routes/partnerRoutes');
 const sliderRoutes = require('./routes/sliderRoutes');
-
+const valueRoutes = require("./routes/valuRoutes");
+const heroSectionRoutes = require("./routes/heroSectionRoutes");
+const keystatsRoutes = require("./routes/keystateRoutes");
 
 const { errorHandler } = require("./middleware/errormiddleware");
 
@@ -62,6 +64,9 @@ app.use("/api/testimonial", testimonialRoutes);
 app.use("/api/secondsection", secondSectionRoutes);
 app.use('/api/partner', partnerRoutes);
 app.use('/api/slider', sliderRoutes);
+app.use("/api/values", valueRoutes);
+app.use("/api/hero-sections", heroSectionRoutes);
+app.use("/api/keystats", keystatsRoutes);
 
 
 app.get('/', (req, res) => {
