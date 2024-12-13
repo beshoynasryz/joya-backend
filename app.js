@@ -19,6 +19,8 @@ const valueRoutes = require("./routes/valuRoutes");
 const heroSectionRoutes = require("./routes/heroSectionRoutes");
 const keystatsRoutes = require("./routes/keystateRoutes");
 const OffPlanRoutes = require("./routes/offPlanRoutes");
+const featureRoutes = require("./routes/featureRoutes");
+const laxuryRoutes = require("./routes/laxuryRoutes");
 
 const { errorHandler } = require("./middleware/errormiddleware");
 
@@ -69,6 +71,8 @@ app.use("/api/values", valueRoutes);
 app.use("/api/hero-sections", heroSectionRoutes);
 app.use("/api/keystats", keystatsRoutes);
 app.use("/api/off-plan", OffPlanRoutes);
+app.use("/api/feature", featureRoutes);
+app.use("/api/laxury", laxuryRoutes);
 
 
 app.get('/', (req, res) => {

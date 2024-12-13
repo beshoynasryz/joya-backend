@@ -81,8 +81,11 @@ const deleteOffPlan = asyncHandler(async (req, res) => {
     throw new Error("OffPlan not found");
   }
 
-  await offPlan.remove();
+  // Use deleteOne() to delete the document
+  await OffPlanModel.deleteOne({ _id: req.params.id });
+
   res.status(200).json({ message: "OffPlan removed successfully" });
 });
+
 
 module.exports = { createOffPlan, getAllOffPlans, getOffPlanById, updateOffPlan, deleteOffPlan };
