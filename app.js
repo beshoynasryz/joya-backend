@@ -21,6 +21,7 @@ const keystatsRoutes = require("./routes/keystateRoutes");
 const OffPlanRoutes = require("./routes/offPlanRoutes");
 const featureRoutes = require("./routes/featureRoutes");
 const laxuryRoutes = require("./routes/laxuryRoutes");
+const imageServices = require("./routes/imageServicesRoutes");
 
 const { errorHandler } = require("./middleware/errormiddleware");
 
@@ -73,6 +74,7 @@ app.use("/api/keystats", keystatsRoutes);
 app.use("/api/off-plan", OffPlanRoutes);
 app.use("/api/feature", featureRoutes);
 app.use("/api/laxury", laxuryRoutes);
+app.use("/api/image-services", imageServices);
 
 
 app.get('/', (req, res) => {
